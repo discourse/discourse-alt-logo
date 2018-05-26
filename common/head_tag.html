@@ -8,8 +8,10 @@ api.reopenWidget("home-logo", {
       altLogoSmall = settings.Alternative_small_logo_url,
       mobileView = this.site.mobileView,
       mobileLogoUrl = siteSettings.mobile_logo_url || "",
-      showMobileLogo = mobileView && mobileLogoUrl.length > 0,
-      (logoUrl = altLogo || ""), (title = siteSettings.title);
+      showMobileLogo = mobileView && mobileLogoUrl.length > 0;
+
+    (logoUrl = altLogo || ""),
+    (title = siteSettings.title);
 
     if (!mobileView && this.attrs.minimized) {
       const logoSmallUrl = altLogoSmall || "";
