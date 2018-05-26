@@ -1,0 +1,8 @@
+Alternative_logo_url:
+  default: ""
+  description:
+    en: The logo image at the top left of your site, should be a wide rectangle shape. If left blank site title text will be shown.
+Alternative_small_logo_url:
+  default: ""
+  description:
+    en: The small logo image at the top left of your site, should be a square shape, seen when scrolling down. If left blank a home glyph will be shown.
