@@ -1,9 +1,9 @@
 <script type="text/discourse-plugin" version="0.8.13">
-const h = require("virtual-dom").h;
 api.reopenWidget("home-logo", {
   logo() {
     const { siteSettings } = this,
       { iconNode } = require("discourse/helpers/fa-icon-node"),
+      h = require("virtual-dom").h,
       altLogo = settings.Alternative_logo_url,
       altLogoSmall = settings.Alternative_small_logo_url,
       mobileView = this.site.mobileView,
