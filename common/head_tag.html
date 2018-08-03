@@ -6,12 +6,11 @@ api.reopenWidget("home-logo", {
       h = require("virtual-dom").h,
       altLogo = settings.Alternative_logo_url,
       altLogoSmall = settings.Alternative_small_logo_url,
+      altMobileLogo = settings.Alternative_mobile_logo_url || "",
       mobileView = this.site.mobileView,
-      mobileLogoUrl = siteSettings.mobile_logo_url || "",
-      showMobileLogo = mobileView && mobileLogoUrl.length > 0;
+      showMobileLogo = mobileView && altMobileLogo.length > 0;
 
-    (logoUrl = altLogo || ""),
-    (title = siteSettings.title);
+    (logoUrl = altLogo || ""), (title = siteSettings.title);
 
     if (!mobileView && this.attrs.minimized) {
       const logoSmallUrl = altLogoSmall || "";
@@ -26,7 +25,7 @@ api.reopenWidget("home-logo", {
     } else if (showMobileLogo) {
       return h("img#site-logo.logo-big", {
         key: "logo-mobile",
-        attributes: { src: mobileLogoUrl, alt: title }
+        attributes: { src: altMobileLogo, alt: title }
       });
     } else if (logoUrl.length) {
       return h("img#site-logo.logo-big", {
