@@ -1,40 +1,68 @@
 <script type="text/discourse-plugin" version="0.8.13">
-api.reopenWidget("home-logo", {
-  logo() {
-    const { siteSettings } = this,
-      { iconNode } = require("discourse/helpers/fa-icon-node"),
-      h = require("virtual-dom").h,
-      altLogo = settings.Alternative_logo_url,
-      altLogoSmall = settings.Alternative_small_logo_url,
-      altMobileLogo = settings.Alternative_mobile_logo_url || "",
-      mobileView = this.site.mobileView,
-      showMobileLogo = mobileView && altMobileLogo.length > 0;
+const isUpgraded = !!api.reopenWidget("home-logo", {}).prototype.logoUrl;
 
-    (logoUrl = altLogo || ""), (title = siteSettings.title);
+if (isUpgraded) {
+  api.reopenWidget("home-logo", {
+    logoUrl() {
+      return (
+        settings.Alternative_logo_url || this.siteSettings.site_logo_url || ""
+      );
+    },
 
-    if (!mobileView && this.attrs.minimized) {
-      const logoSmallUrl = altLogoSmall || "";
-      if (logoSmallUrl.length) {
-        return h("img#site-logo.logo-small", {
-          key: "logo-small",
-          attributes: { src: logoSmallUrl, width: 33, height: 33, alt: title }
+    mobileLogoUrl() {
+      return (
+        settings.Alternative_mobile_logo_url ||
+        this.siteSettings.site_mobile_logo_url ||
+        ""
+      );
+    },
+
+    smallLogoUrl() {
+      return (
+        settings.Alternative_small_logo_url ||
+        this.siteSettings.site_logo_small_url ||
+        ""
+      );
+    }
+  });
+} else {
+  api.reopenWidget("home-logo", {
+    logo() {
+      const { siteSettings } = this,
+        { iconNode } = require("discourse/helpers/fa-icon-node"),
+        h = require("virtual-dom").h,
+        altLogo = settings.Alternative_logo_url,
+        altLogoSmall = settings.Alternative_small_logo_url,
+        altMobileLogo = settings.Alternative_mobile_logo_url || "",
+        mobileView = this.site.mobileView,
+        showMobileLogo = mobileView && altMobileLogo.length > 0;
+
+      (logoUrl = altLogo || ""), (title = siteSettings.title);
+
+      if (!mobileView && this.attrs.minimized) {
+        const logoSmallUrl = altLogoSmall || "";
+        if (logoSmallUrl.length) {
+          return h("img#site-logo.logo-small", {
+            key: "logo-small",
+            attributes: { src: logoSmallUrl, width: 33, height: 33, alt: title }
+          });
+        } else {
+          return iconNode("home");
+        }
+      } else if (showMobileLogo) {
+        return h("img#site-logo.logo-big", {
+          key: "logo-mobile",
+          attributes: { src: altMobileLogo, alt: title }
+        });
+      } else if (logoUrl.length) {
+        return h("img#site-logo.logo-big", {
+          key: "logo-big",
+          attributes: { src: logoUrl, alt: title }
         });
       } else {
-        return iconNode("home");
+        return h("h1#site-text-logo.text-logo", { key: "logo-text" }, title);
       }
-    } else if (showMobileLogo) {
-      return h("img#site-logo.logo-big", {
-        key: "logo-mobile",
-        attributes: { src: altMobileLogo, alt: title }
-      });
-    } else if (logoUrl.length) {
-      return h("img#site-logo.logo-big", {
-        key: "logo-big",
-        attributes: { src: logoUrl, alt: title }
-      });
-    } else {
-      return h("h1#site-text-logo.text-logo", { key: "logo-text" }, title);
     }
-  }
-});
+  });
+}
 </script>
