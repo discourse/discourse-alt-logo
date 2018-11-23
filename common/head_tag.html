@@ -1,4 +1,4 @@
-<script type="text/discourse-plugin" version="0.8.13">
+<script type="text/discourse-plugin" version="0.8.25">
 const isUpgraded = !!api.reopenWidget("home-logo", {}).prototype.logoUrl;
 
 if (isUpgraded) {
@@ -35,16 +35,16 @@ if (isUpgraded) {
         altLogoSmall = settings.Alternative_small_logo_url,
         altMobileLogo = settings.Alternative_mobile_logo_url || "",
         mobileView = this.site.mobileView,
-        showMobileLogo = mobileView && altMobileLogo.length > 0;
+        showMobileLogo = mobileView && altMobileLogo.length > 0,
+        logoUrl = altLogo || "",
+        title = siteSettings.title;
 
-      (logoUrl = altLogo || ""), (title = siteSettings.title);
-
-      if (!mobileView && this.attrs.minimized) {
+      if (this.attrs.minimized) {
         const logoSmallUrl = altLogoSmall || "";
         if (logoSmallUrl.length) {
           return h("img#site-logo.logo-small", {
             key: "logo-small",
-            attributes: { src: logoSmallUrl, width: 33, height: 33, alt: title }
+            attributes: { src: logoSmallUrl, width: 36, height: 36, alt: title }
           });
         } else {
           return iconNode("home");
@@ -52,7 +52,7 @@ if (isUpgraded) {
       } else if (showMobileLogo) {
         return h("img#site-logo.logo-big", {
           key: "logo-mobile",
-          attributes: { src: altMobileLogo, alt: title }
+          attributes: { src: altMobileLogo, height: 36, alt: title }
         });
       } else if (logoUrl.length) {
         return h("img#site-logo.logo-big", {
