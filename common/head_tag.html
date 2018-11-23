@@ -44,7 +44,7 @@ if (isUpgraded) {
         if (logoSmallUrl.length) {
           return h("img#site-logo.logo-small", {
             key: "logo-small",
-            attributes: { src: logoSmallUrl, width: 36, height: 36, alt: title }
+            attributes: { src: logoSmallUrl, width: 36, alt: title }
           });
         } else {
           return iconNode("home");
@@ -52,7 +52,7 @@ if (isUpgraded) {
       } else if (showMobileLogo) {
         return h("img#site-logo.logo-big", {
           key: "logo-mobile",
-          attributes: { src: altMobileLogo, height: 36, alt: title }
+          attributes: { src: altMobileLogo, alt: title }
         });
       } else if (logoUrl.length) {
         return h("img#site-logo.logo-big", {
