@@ -1,5 +1,5 @@
 # Discourse alternative logos
 
-A theme component allows you to set differnt logos for dark/light themes
+A Discourse theme component that allows you to set different logos for dark/light themes
 
-More information: https://meta.discourse.org/t/alternative-logo/88502
+More information: https://meta.discourse.org/t/88502
