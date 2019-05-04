@@ -1,0 +1,21 @@
+<script type="text/discourse-plugin" version="0.8.25">
+  api.reopenWidget("home-logo", {
+    logoUrl() {
+      return (
+        settings.Alternative_logo_url || ""
+      );
+    },
+
+    mobileLogoUrl() {
+      return (
+        settings.Alternative_mobile_logo_url || ""
+      );
+    },
+
+    smallLogoUrl() {
+      return (
+        settings.Alternative_small_logo_url || ""
+      );
+    }
+  });
+</script>
