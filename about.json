@@ -1,6 +1,6 @@
 {
   "name": "Alternative Logos",
   "about_url": "https://meta.discourse.org/t/alternative-logo/88502",
-  "license_url": "https://github.com/hnb-ku/discourse-alt-logo/blob/master/LICENSE",
+  "license_url": "https://github.com/discourse/discourse-alt-logo/blob/master/LICENSE",
   "component": true
 }
