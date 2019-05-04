@@ -2,23 +2,19 @@
   api.reopenWidget("home-logo", {
     logoUrl() {
       return (
-        settings.Alternative_logo_url || this.siteSettings.site_logo_url || ""
+        settings.Alternative_logo_url || ""
       );
     },
 
     mobileLogoUrl() {
       return (
-        settings.Alternative_mobile_logo_url ||
-        this.siteSettings.site_mobile_logo_url ||
-        ""
+        settings.Alternative_mobile_logo_url || ""
       );
     },
 
     smallLogoUrl() {
       return (
-        settings.Alternative_small_logo_url ||
-        this.siteSettings.site_logo_small_url ||
-        ""
+        settings.Alternative_small_logo_url || ""
       );
     }
   });
