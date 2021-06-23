@@ -1,5 +1,15 @@
-# Discourse alternative logos
+# ⚠️ DEPRECATED
 
-A Discourse theme component that allows you to set different logos for dark/light themes
+This theme component has been deprecated in favor of the following core Discourse site settings:
 
-More information: https://meta.discourse.org/t/88502
+- `logo dark`
+- `logo small dark`
+- `mobile logo dark`
+
+Sites that had previously installed this component can safely delete it.
+
+---
+
+## Discourse alternative logos
+
+A Discourse theme component that allowed you to set different logos for dark/light themes
