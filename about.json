@@ -2,6 +2,5 @@
   "name": "Alternative Logos",
   "about_url": "https://meta.discourse.org/t/alternative-logo/88502",
   "license_url": "https://github.com/discourse/discourse-alt-logo/blob/main/LICENSE",
-  "maximum_discourse_version": 2.5,
   "component": true
 }
