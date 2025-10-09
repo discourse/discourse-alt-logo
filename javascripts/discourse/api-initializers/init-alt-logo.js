@@ -1,6 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
 
-export default apiInitializer("0.8", (api) => {
+export default apiInitializer((api) => {
   api.registerValueTransformer("home-logo-image-url", ({ value, context }) => {
     if (context.dark) {
       return ""; // Disable dark-mode-specific things. This theme component overrides logo in all modes
